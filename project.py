@@ -10,39 +10,60 @@ import csv
 
 
 '''
-Storing ratings in an array from csv file
+Storing ratings in an arrays from csv file
+ratingRecords_X Structre: [[userId, movieId], [userId, movieId], [userId, movieId], [userId, movieId]....[userId, movieId]]
+ratingRecords_y Structre: [rating, rating, rating, rating, rating....rating]
 
-format:
-    {['userId' 'movieId' 'rating'],['userId' 'movieId' 'rating'],['userId' 'movieId' 'rating'])
     
 '''
+
 size = 22026 # only considering first 156 users
-ratingsRecords = []
-f = open('ratings.csv', 'r')
+ratingsRecords_X = []
+ratingsRecords_y = []
+f = open("C:/Users/Vaibhav Vachhani/Downloads/SEM-5/CAB420/final project/ml-20m/ml-20m/ratings.csv", 'r')
 for i in range(0,size):
     record = f.readline()
-    arr = record.split(',')
-    arr = np.asarray(arr[:3])
-    ratingsRecords.append(arr)
-#print(ratingsRecords[1])
-
-
-
-'''
-Storing Movies Information in an array from csv file
-
-format:
-    {['movieId' 'title' 'genres'],['movieId' 'title' 'genres'],['movieId' 'title' 'genres'])
+    arr_data = record.split(',')
+    arr = arr_data[:2]
+    arr1 = arr_data[2]
+    ratingsRecords_X.append(arr)
     
+    ratingsRecords_y.append(arr1)
+#print(ratingsRecords_X)
+#print(ratingsRecords_y)
+
+'''
+Storing Movies Information in an arrays from csv file
+
+movieInfo_X Structre: [[movieId, title], [movieId, title], [movieId, title],[movieId, title] ......[movieId, title]] 
+movieInfo_y Structre: [[Genres], [Genres], [Genres], [Genres], [Genres].....[Genres]] 
 '''
 
-moviesInfo = []
-with open('movies.csv', newline='', encoding='utf-8') as f:
+moviesInfo_X = []
+moviesInfo_y = []
+
+with open("C:/Users/Vaibhav Vachhani/Downloads/SEM-5/CAB420/final project/ml-20m/ml-20m/movies.csv", newline='', encoding='utf-8') as f:
     for row in csv.reader(f):
-        moviesInfo.append(row)
-print(moviesInfo)
+        moviesInfo_X.append(row[:2])
+        moviesInfo_y.append(row[2])
+print(moviesInfo_X)
+#print(moviesInfo_y)
 
 
+'''
+Storing Tags Information in an arrays from csv file
 
+tagsInfo_X Structure : [[userId, movieId], [userId, movieId], [userId, movieId], [userId, movieId]....[userId, movieId]]
+tagsInfo_y Structure : [tag, tag, tag, tag......tag, tag]
+'''
 
+tagsInfo_X = []
+tagsInfo_y = []
+
+with open("C:/Users/Vaibhav Vachhani/Downloads/SEM-5/CAB420/final project/ml-20m/ml-20m/tags.csv", newline='', encoding='utf-8') as f:
+    for row in csv.reader(f):
+        tagsInfo_X.append(row[:2])
+        tagsInfo_y.append(row[2])
+#print(tagsInfo_X)
+#print(tagsInfo_y)
 
