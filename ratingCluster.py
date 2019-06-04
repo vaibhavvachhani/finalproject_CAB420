@@ -69,7 +69,9 @@ def doRatingsClustering(ratingsRecords_X, ratingsRecords_y, moviesInfo_X, movies
     romanticMovies = getSimMovie(moviesInfo_X,moviesInfo_y, 'Romance')
     romanticMoviesScore = getUserRating(ratingsRecords_X,ratingsRecords_y, romanticMovies)
     avgRomanticScore = getAvg(romanticMoviesScore)
-
+    print(romanticMovies)
+    print(romanticMoviesScore)
+    print(avgRomanticScore)
     scifiMovies = getSimMovie(moviesInfo_X,moviesInfo_y,'Sci-Fi')
     scifiMoviesScore = getUserRating(ratingsRecords_X,ratingsRecords_y, scifiMovies)
     avgScifiScore = getAvg(scifiMoviesScore)
@@ -105,7 +107,7 @@ if __name__ == "__main__":
     size = 22026 # only considering first 156 users
     ratingsRecords_X = []
     ratingsRecords_y = []
-    f = open("C:/Users/vrenn/Documents/QUT Files/CAB420/Assignment 3/Codes/AB420 Final Project/AB420 Final Project/ratings.csv", 'r')
+    f = open("C:/Users/Vaibhav Vachhani/Downloads/SEM-5/CAB420/final project/ml-20m/ml-20m/ratings.csv", 'r')
     for i in range(0,size):
         record = f.readline()
         arr_data = record.split(',')
@@ -126,7 +128,7 @@ if __name__ == "__main__":
     moviesInfo_X = []
     moviesInfo_y = []
 
-    with open("C:/Users/vrenn/Documents/QUT Files/CAB420/Assignment 3/Codes/CAB420 Final Project/CAB420 Final Project/movies.csv", newline='', encoding='utf-8') as f:
+    with open("C:/Users/Vaibhav Vachhani/Downloads/SEM-5/CAB420/final project/ml-20m/ml-20m/movies.csv", newline='', encoding='utf-8') as f:
         for row in csv.reader(f):
             moviesInfo_X.append(row[:2])
             moviesInfo_y.append(row[2].split('|'))
@@ -142,7 +144,7 @@ if __name__ == "__main__":
     tagsInfo_X = []
     tagsInfo_y = []
 
-    with open("C:/Users/vrenn/Documents/QUT Files/CAB420/Assignment 3/Codes/CAB420 Final Project/CAB420 Final Project/tags.csv", newline='', encoding='utf-8') as f:
+    with open("C:/Users/Vaibhav Vachhani/Downloads/SEM-5/CAB420/final project/ml-20m/ml-20m/tags.csv", newline='', encoding='utf-8') as f:
         for row in csv.reader(f):
             tagsInfo_X.append(row[:2])
             tagsInfo_y.append(row[2])
