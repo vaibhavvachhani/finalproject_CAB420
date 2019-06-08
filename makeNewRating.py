@@ -3,6 +3,7 @@
 # Purpose of the function - to create a new csv file that has all the ratings for a user
 
 # Imports
+import helper
 import numpy as np
 import os
 import pandas as pd
@@ -15,9 +16,9 @@ import pandas as pd
 #   - loads movie id to get total movies
 #   - returns the data in ratings and movies
 def loadData():
-    print('Loading data of 156 users...')
+    print('Loading data of 702 users...')
     r_cols = ['user_id', 'movie_id', 'rating', 'timestamp']
-    ratings = pd.read_csv("ratingsLimited.csv", sep=',', names=r_cols, encoding='latin-1')
+    ratings = pd.read_csv("ratings100000.csv", sep=',', names=r_cols, header=None, encoding='latin-1',skiprows=1)
     print('-------------------------------')
     print('Number of ratings: ', len(ratings))
     print(ratings.head(4))
@@ -90,11 +91,11 @@ if __name__ == "__main__":
     
     # Load data.
     ratings, movies = loadData()
-
+    
     # create new matrix
     newData, hasCol = processData(ratings, movies)
-
+    most_rated_movies_1k = helper.get_most_rated_movies(newData,1000)
     # create new dataframe
     newDF = makeDF(newData, hasCol)
    
-    newDF.to_csv("newRating.csv",index=False, encoding='latin-1')
+    #newDF.to_csv("newRating.csv",index=False, encoding='latin-1')
