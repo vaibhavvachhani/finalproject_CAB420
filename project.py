@@ -198,9 +198,14 @@ if __name__ == "__main__":
     kmeans = KMeans(n_clusters=2, random_state=0).fit(X)
     print(len(m))
     print(len(y))
-    plt.scatter(m, y)
+    n = 9999
+    r = 2 * np.random.rand(n)
+    theta = 2 * np.pi * np.random.rand(n)
+    area = 200 * r**2 * np.random.rand(n)
+    colors = theta
+    plt.scatter(m, y, c=colors, s=area, cmap=plt.cm.gist_heat)
     
-    plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], c='red', marker='x')
+    #plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], c='red', marker='x')
         
     plt.title('Data points and cluster centroids')
     plt.show()
